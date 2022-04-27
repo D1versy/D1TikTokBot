@@ -59,6 +59,7 @@ def Download_Video(Link,update, context):
 
     # Deleteing Status Messages
     status_msg.delete()
+    message.delete(message.message_id)
 
 def incoming_message_action(update, context):
     message=update.message
