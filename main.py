@@ -8,6 +8,7 @@ from telegram.ext import (
 import os
 import logging
 import tiktok_downloader
+from random import randint
 
 
 # Your BOT Token
@@ -42,14 +43,14 @@ def Download_Video(Link,update, context):
     status_msg=message.reply_text('🚀 Downloading ....')
     # Getting Download Links
     try:
-        tiktok_downloader.tikmate().get_media(Link)[0].download(f"./videos/result_{message.from_user.id}.mp4")
+        path = f'./videos/result_{message.from_user.id}_{randint(0, 100)}.mp4'
+        tiktok_downloader.tikmate().get_media(Link)[0].download(path)
         print(f'Downloading Videos from {message.from_user}')
-        path = f'./videos/result_{message.from_user.id}.mp4'
-        with open(f'./videos/result_{message.from_user.id}.mp4', 'rb') as file:
+        with open(path, 'rb') as file:
             f = file.read()
         print('Uploading Videos')
         status_msg.edit_text('🚀 Uploading....')
-        caption_text = ""
+        caption_text = f'sent by : @{message.from_user.username}'
         message.reply_video(video=f, supports_streaming=True, caption=caption_text, parse_mode=_ParseMode)
         os.remove(path)
     except:
