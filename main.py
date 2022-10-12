@@ -47,8 +47,8 @@ def Download_Video(Link, update, context):
 
     # Getting Download Links
     try:
-        path = f'./videos/result_{message.from_user.id}_{randint(0, 100)}.mp4'
-        tiktok_downloader.Snaptik(Link)[0].download(path)
+        path = f'./videos/result_{message.from_user.id}_{randint(0, 10000)}.mp4'
+        tiktok_downloader.Mdown(Link)[0].download(path)
         print(f'Downloading Videos from {message.from_user}')
         with open(path, 'rb') as file:
             f = file.read()
@@ -59,7 +59,7 @@ def Download_Video(Link, update, context):
         os.remove(path)
     except Exception as ex:
         print(f'Download Links Generate Error !!!!!!!!!!!!!!!!!!!!!! {ex}')
-        status_msg.edit_text(f'⁉️{ex} \n0_o contact : @d1versy')
+        status_msg.edit_text(f'⁉️{ex} \nkeep calm and waiting for maintenance')
         return
 
     # Deleting Status Messages
