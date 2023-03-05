@@ -1,3 +1,4 @@
+import telegram
 from telegram import ParseMode
 from telegram.ext import (
     Updater,
@@ -25,7 +26,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start_handler(update, context):
-    update.message.reply_text('Hey! I am TikTok downloader Bot. I am here to help you send video in video format ✌️\nAdd me in your Telegram group and share any video from TikTok.', parse_mode=_ParseMode)
+    update.message.reply_text('Hey! I am TikTok downloader Bot. I am here to help you send video in video format ✌️\nAdd me in your Telegram group and share any video from TikTok.\nMore details: /help', parse_mode=_ParseMode)
 
 
 def about_handler(update, context):
@@ -37,7 +38,7 @@ def devs_handler(update, context):
 
 
 def help_handler(update, context):
-    update.message.reply_text('BOT Commands : /start , /about , /devs , /help', parse_mode=_ParseMode)
+    update.message.reply_text('BOT Commands : /start , /about , /devs\n"Availables D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot"', parse_mode=_ParseMode)
 
 
 # Download Task
