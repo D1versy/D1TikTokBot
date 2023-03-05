@@ -38,7 +38,7 @@ def devs_handler(update, context):
 
 
 def help_handler(update, context):
-    update.message.reply_text('BOT Commands : /start , /about , /devs\n"Availables D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot"', parse_mode=_ParseMode)
+    update.message.reply_text('BOT Commands : /start , /about , /devs\n"Availables D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot', parse_mode=_ParseMode)
 
 
 # Download Task
