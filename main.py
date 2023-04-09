@@ -16,6 +16,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # TikTok Video URL Types
 tikTok_link_types = ['https://m.tiktok.com', 'https://vt.tiktok.com', 'https://tiktok.com', 'https://www.tiktok.com', 'https://vm.tiktok.com']
+keep_link_key = ['-k']
 del_text = []
 
 # ParseMode Type For All Messages
@@ -38,7 +39,7 @@ def devs_handler(update, context):
 
 
 def help_handler(update, context):
-    update.message.reply_text('BOT Commands : /start , /about , /devs\n"Availables D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot', parse_mode=_ParseMode)
+    update.message.reply_text('BOT Commands : /start , /about , /devs\nAvailable D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot', parse_mode=_ParseMode)
 
 
 # Download Task
@@ -48,7 +49,7 @@ def Download_Video(Link, update, context):
 
     # Getting Download Links
     try:
-        path = f'./videos/result_{message.from_user.id}_{randint(0, 10000)}.mp4'
+        path = f'./videos/result_{message.from_user.id}_{randint(0, 100000)}.mp4'
         tiktok_downloader.Mdown(Link)[0].download(path)
         print(f'Downloading Videos from {message.from_user}')
         with open(path, 'rb') as file:
@@ -82,7 +83,9 @@ def del_not_allowed_text(none, update, context):
 
 def incoming_message_action(update, context):
     message = update.message
-    if any(word in str(message.text) for word in tikTok_link_types):
+    if any(word in str(message.text) for word in keep_link_key):
+        pass
+    elif any(word in str(message.text) for word in tikTok_link_types):
         context.dispatcher.run_async(Download_Video, str(message.text), update, context)
     elif any(word in str(message.text) for word in del_text):
         context.dispatcher.run_async(del_not_allowed_text, str(message.text), update, context)
