@@ -16,7 +16,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # TikTok Video URL Types
 tikTok_link_types = ['https://m.tiktok.com', 'https://vt.tiktok.com', 'https://tiktok.com', 'https://www.tiktok.com', 'https://vm.tiktok.com']
-keep_link_key = ['-k']
+keep_link_key = [' -k']
 del_text = []
 
 # ParseMode Type For All Messages
