@@ -19,7 +19,7 @@ def log_unique_user_id(user_id, log_file='Users.log'):
 
 # Save user request to a separate file
 def user_history_logger(user_name, user_id, message_text):
-    filename = f'{user_name or user_id}.txt'
+    filename = f'{user_name, user_id or user_id}.txt'
     filepath = os.path.join('./logs', filename)
 
     # Create 'logs' directory if it doesn't exist
