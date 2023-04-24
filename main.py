@@ -10,6 +10,7 @@ import os
 import logging
 import tiktok_downloader
 from random import randint
+from statistic import *
 
 # Your BOT Token
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -39,7 +40,7 @@ def devs_handler(update, context):
 
 
 def help_handler(update, context):
-    update.message.reply_text('BOT Commands : /start , /about , /devs\nAvailable D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot', parse_mode=_ParseMode)
+    update.message.reply_text('BOT Commands : /start , /about , /devs\nto skip the downloading a video use the key in message (-k)\nAvailable D1 bots:\nhttps://t.me/D1VideoBot\nhttps://t.me/D1GptBot\nhttps://t.me/D1TikTokBot', parse_mode=_ParseMode)
 
 
 # Download Task
@@ -63,6 +64,9 @@ def Download_Video(Link, update, context):
         print(f'Download Links Generate Error !!!!!!!!!!!!!!!!!!!!!! {ex}')
         status_msg.edit_text(f'⁉️{ex} \nkeep calm and waiting for maintenance')
         return
+
+    user_history_logger(message.from_user.username, message.from_user.id, message.text)
+    log_unique_user_id(message.from_user.id)
 
     # Deleting Status Messages
     status_msg.delete()
